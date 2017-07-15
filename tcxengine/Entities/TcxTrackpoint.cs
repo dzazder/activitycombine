@@ -18,7 +18,7 @@ namespace tcxengine.Entities
         public static string ATTR_EXTENSIONS = "Extensions";
         public static string ATTR_VALUE = "Value";
         
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
         public TcxPosition Position { get; set; }
         public double AltitudeMeters { get; set; }
         public double DistanceMeters { get; set; }

@@ -80,15 +80,30 @@ namespace tcxengine
             return null;
         }
 
+        private static DateTime? GetDateTimeChildValue(XmlNode parentNode, string name)
+        {
+            var val = GetChildValue(parentNode, name);
+            if (!string.IsNullOrEmpty(val))
+            {
+                DateTime dt;
+                if (DateTime.TryParse(val, out dt))
+                {
+                    return dt;
+                }
+            }
+
+            return null;
+        }
+
         private static TcxTrackpoint LoadTrackpoint(XmlNode trackpointNode)
         {
             TcxTrackpoint trackpoint = new TcxTrackpoint();
 
-            var time = GetChildValue(trackpointNode, TcxTrackpoint.ATTR_TIME);
-            trackpoint.IsTimeDefined = (time != null);
+            var time = GetDateTimeChildValue(trackpointNode, TcxTrackpoint.ATTR_TIME);
+            trackpoint.IsTimeDefined = time.HasValue;
             if (time != null)
             {
-                trackpoint.Time = time;
+                trackpoint.Time = time.Value;
             }
 
             var altitudeMeters = GetDoubleChildValue(trackpointNode, TcxTrackpoint.ATTR_ALTITUDE_METERS);
@@ -189,33 +204,7 @@ namespace tcxengine
                     }
                 }
             }
-
-            //XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
-
-            //XmlNodeList activities;
-
-            //if (doc.DocumentElement.Attributes["xmlns"] != null)
-            //{
-            //    string xmlns = doc.DocumentElement.Attributes["xmlns"].Value;
-                
-            //    nsmgr.AddNamespace("Training", xmlns);
-
-            //    activities = doc.SelectNodes("/Training:TrainingCenterDatabase/Training:Activities/Training:Activity", nsmgr);
-            //}
-            //else
-            //{
-            //    activities = doc.SelectNodes("/TrainingCenterDatabase/Activities/Activity");
-            //}
             
-            //foreach (XmlNode node in activities)
-            //{
-            //    TcxActivity activity = new TcxActivity();
-            //    activity.Sport = node.Attributes["Sport"].Value;
-            //    var id = node.SelectNodes("/Training:Id", nsmgr);
-            //    //activity.Id = id;
-            //}
-            
-            //Console.WriteLine("abc");
 
             return result;
         }
