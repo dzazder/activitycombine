@@ -8,6 +8,16 @@ namespace tcxengine.Entities
 {
     public class TcxTrackpoint
     {
+        public static string ATTR_TIME = "Time";
+        public static string ATTR_POSITION = "Position";
+        public static string ATTR_ALTITUDE_METERS = "AltitudeMeters";
+        public static string ATTR_DISTANCE_METERS = "DistanceMeters";
+        public static string ATTR_SENSOR_STATE = "SensorState";
+        public static string ATTR_CADENCE = "Cadence";
+        public static string ATTR_HEART_RATE_BPM = "HeartRateBpm";
+        public static string ATTR_EXTENSIONS = "Extensions";
+        public static string ATTR_VALUE = "Value";
+        
         public string Time { get; set; }
         public TcxPosition Position { get; set; }
         public double AltitudeMeters { get; set; }

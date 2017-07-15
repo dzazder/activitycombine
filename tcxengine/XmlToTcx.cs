@@ -65,11 +65,73 @@ namespace tcxengine
             return null;
         }
 
-        private static double GetDoubleChildValue(XmlNode parentNode, string name)
+        private static double? GetDoubleChildValue(XmlNode parentNode, string name)
         {
             var val = GetChildValue(parentNode, name);
-            //if ()
-            return 0;
+            if (!string.IsNullOrEmpty(val))
+            {
+                double d;
+                if (Double.TryParse(val, out d))
+                {
+                    return d;
+                }
+            }
+
+            return null;
+        }
+
+        private static TcxTrackpoint LoadTrackpoint(XmlNode trackpointNode)
+        {
+            TcxTrackpoint trackpoint = new TcxTrackpoint();
+
+            var time = GetChildValue(trackpointNode, TcxTrackpoint.ATTR_TIME);
+            trackpoint.IsTimeDefined = (time != null);
+            if (time != null)
+            {
+                trackpoint.Time = time;
+            }
+
+            var altitudeMeters = GetDoubleChildValue(trackpointNode, TcxTrackpoint.ATTR_ALTITUDE_METERS);
+            trackpoint.IsAltitudeMetersDefined = altitudeMeters.HasValue;
+            if (altitudeMeters.HasValue)
+            {
+                trackpoint.AltitudeMeters = altitudeMeters.Value;
+            }
+
+            var distanceMeters = GetDoubleChildValue(trackpointNode, TcxTrackpoint.ATTR_DISTANCE_METERS);
+            trackpoint.IsDistanceMetersDefined = distanceMeters.HasValue;
+            if (distanceMeters.HasValue)
+            {
+                trackpoint.DistanceMeters = distanceMeters.Value;
+            }
+
+            var cadence = GetDoubleChildValue(trackpointNode, TcxTrackpoint.ATTR_CADENCE);
+            trackpoint.IsCadenceDefined = cadence.HasValue;
+            if (cadence.HasValue)
+            {
+                trackpoint.Cadence = cadence.Value;
+            }
+
+            var sensorState = GetChildValue(trackpointNode, TcxTrackpoint.ATTR_SENSOR_STATE);
+            trackpoint.IsSensorStateDefined = (sensorState != null);
+            if (sensorState != null)
+            {
+                trackpoint.SensorState = sensorState;
+            }
+
+            var heartRateNode = GetChild(trackpointNode, TcxTrackpoint.ATTR_HEART_RATE_BPM);
+            trackpoint.IsHeartRateBpmDefined = heartRateNode != null;
+            if (heartRateNode != null)
+            {
+                var heartRateValue = GetDoubleChildValue(heartRateNode, TcxTrackpoint.ATTR_VALUE);
+                trackpoint.IsHeartRateBpmDefined = heartRateValue.HasValue;
+                if (heartRateValue.HasValue)
+                {
+                    trackpoint.HeartRateBpm = heartRateValue.Value;
+                }
+            }
+
+            return trackpoint;
         }
 
         public static List<TcxActivity> Convert(string xmlFilePath)
@@ -112,12 +174,7 @@ namespace tcxengine
                                     var trackPointsNodes = GetChildren(trackNode, "Trackpoint");
                                     foreach (var trackPointNode in trackPointsNodes)
                                     {
-                                        TcxTrackpoint point = new TcxTrackpoint();
-                                        point.Time = GetChildValue(trackPointNode, "Time");// GetChildren(trackPointNode, "Time")[0].ChildNodes[0].Value;
-                                        point.AltitudeMeters = Double.Parse(GetChildValue(trackPointNode, "AltitudeMeters")); // Double.Parse(GetChildren(trackPointNode, "AltitudeMeters")[0].ChildNodes[0].Value);
-                                        point.DistanceMeters = Double.Parse(GetChildValue(trackPointNode, "DistanceMeters")); // Double.Parse(GetChildren(trackPointNode, "DistanceMeters")[0].ChildNodes[0].Value);
-                                        point.Cadence = Double.Parse(GetChildValue(trackPointNode, "Cadence")); // Double.Parse(GetChildren(trackPointNode, "Cadence")[0].ChildNodes[0].Value);
-                                        var heartRateNode = GetChildren(trackPointNode, "HeartRateBpm")[0];
+                                        TcxTrackpoint point = LoadTrackpoint(trackPointNode);
 
                                         lap.Track.Track.Add(point);
                                     }
