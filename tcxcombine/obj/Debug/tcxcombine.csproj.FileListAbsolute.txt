@@ -1,0 +1,11 @@
+G:\projects\tcxcombine\tcxcombine\bin\Debug\tcxcombine.exe.config
+G:\projects\tcxcombine\tcxcombine\bin\Debug\tcxcombine.exe
+G:\projects\tcxcombine\tcxcombine\bin\Debug\tcxcombine.pdb
+G:\projects\tcxcombine\tcxcombine\obj\Debug\tcxcombine.csprojResolveAssemblyReference.cache
+G:\projects\tcxcombine\tcxcombine\obj\Debug\tcxcombine.Properties.Resources.resources
+G:\projects\tcxcombine\tcxcombine\obj\Debug\tcxcombine.csproj.GenerateResource.Cache
+G:\projects\tcxcombine\tcxcombine\obj\Debug\tcxcombine.exe
+G:\projects\tcxcombine\tcxcombine\obj\Debug\tcxcombine.pdb
+G:\projects\tcxcombine\tcxcombine\bin\Debug\tcxengine.dll
+G:\projects\tcxcombine\tcxcombine\bin\Debug\tcxengine.pdb
+G:\projects\tcxcombine\tcxcombine\obj\Debug\tcxcombine.Form1.resources
