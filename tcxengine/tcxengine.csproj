@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\GpxTrack.cs" />
+    <Compile Include="Entities\GpxTrackpoint.cs" />
+    <Compile Include="Entities\GpxTrackSegment.cs" />
     <Compile Include="Entities\TcxActivity.cs" />
     <Compile Include="Entities\TcxExtensions.cs" />
     <Compile Include="Entities\TcxLap.cs" />
@@ -48,6 +51,8 @@
     <Compile Include="Entities\TcxTrackpoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\TcxTrack.cs" />
+    <Compile Include="XmlConvertBase.cs" />
+    <Compile Include="XmlToGpx.cs" />
     <Compile Include="XmlToTcx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
