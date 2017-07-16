@@ -40,6 +40,7 @@ namespace tcxengine
             {
                 trackpoint.Position.Longitude = lon.Value;
             }
+            trackpoint.IsPositionDefined = lat.HasValue || lon.HasValue;
 
             return trackpoint;
         }

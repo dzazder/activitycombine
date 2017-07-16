@@ -9,7 +9,7 @@ namespace tcxengine.Entities
 {
     public class TcxTrack
     {
-        public List<TcxTrackpoint> Track { get; set; }
+        public List<TcxTrackpoint> TrackPoints { get; set; }
 
         public void OrderByTime()
         {

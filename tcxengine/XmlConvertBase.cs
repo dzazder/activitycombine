@@ -7,6 +7,7 @@ using System.Xml;
 
 namespace tcxengine
 {
+    
     public class XmlConvertBase
     {
         /// <summary>
@@ -69,7 +70,7 @@ namespace tcxengine
             if (!string.IsNullOrEmpty(val))
             {
                 double d;
-                if (Double.TryParse(val.Replace('.', ','), out d))
+                if (Double.TryParse(val.Replace('.', ','), out d))  // todo localization
                 {
                     return d;
                 }

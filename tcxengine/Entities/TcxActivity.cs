@@ -9,7 +9,7 @@ namespace tcxengine.Entities
     public class TcxActivity
     {
         public string Id { get; set; }
-        public List<TcxLap> Lap { get; set; }
+        public List<TcxLap> Laps { get; set; }
         public string Sport { get; set; }
     }
 }

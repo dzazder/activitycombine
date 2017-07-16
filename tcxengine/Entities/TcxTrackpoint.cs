@@ -17,7 +17,7 @@ namespace tcxengine.Entities
         public static string ATTR_HEART_RATE_BPM = "HeartRateBpm";
         public static string ATTR_EXTENSIONS = "Extensions";
         public static string ATTR_VALUE = "Value";
-        
+
         public DateTime Time { get; set; }
         public TcxPosition Position { get; set; }
         public double AltitudeMeters { get; set; }
@@ -35,5 +35,37 @@ namespace tcxengine.Entities
         public bool IsHeartRateBpmDefined { get; set; }
         public bool IsCadenceDefined { get; set; }
         public bool IsExtensionsDefined { get; set; }
+
+        public TcxTrackpoint()
+        {
+
+        }
+
+        public TcxTrackpoint(GpxTrackpoint gpx)
+        {
+            if (gpx.IsTimeDefined)
+            {
+                Time = gpx.Time;
+            }
+
+            if (gpx.IsPositionDefined)
+            {
+                Position = new TcxPosition(gpx.Position.Latitude, gpx.Position.Longitude);
+            }
+
+            if (gpx.IsAltitudeMetersDefined)
+            {
+                AltitudeMeters = gpx.AltitudeMeters;
+            }
+
+            IsTimeDefined = gpx.IsTimeDefined;
+            IsPositionDefined = gpx.IsPositionDefined;
+            IsAltitudeMetersDefined = gpx.IsAltitudeMetersDefined;
+            IsDistanceMetersDefined = false;
+            IsSensorStateDefined = false;
+            IsHeartRateBpmDefined = false;
+            IsCadenceDefined = false;
+            IsExtensionsDefined = false;
+        }
     }
 }

@@ -92,14 +92,14 @@ namespace tcxengine
 
                             tcxAct.Id = GetChildValue(activity, "Id");
                             tcxAct.Sport = sport.Value;
-                            tcxAct.Lap = new List<TcxLap>();
+                            tcxAct.Laps = new List<TcxLap>();
 
                             foreach (XmlNode lapNode in lapChild)
                             {
                                 TcxLap lap = new TcxLap();
                                 lap.StartTime = lapNode.Attributes["StartTime"].Value;
                                 lap.Track = new TcxTrack();
-                                lap.Track.Track = new List<TcxTrackpoint>();
+                                lap.Track.TrackPoints = new List<TcxTrackpoint>();
 
                                 var trackNodes = GetChildren(lapNode, "Track");
                                 foreach (var trackNode in trackNodes)
@@ -109,11 +109,11 @@ namespace tcxengine
                                     {
                                         TcxTrackpoint point = LoadTrackpoint(trackPointNode);
 
-                                        lap.Track.Track.Add(point);
+                                        lap.Track.TrackPoints.Add(point);
                                     }
                                 }
 
-                                tcxAct.Lap.Add(lap);
+                                tcxAct.Laps.Add(lap);
                             }
 
                             result.Add(tcxAct);

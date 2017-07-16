@@ -20,5 +20,7 @@ namespace tcxengine.Entities
         public bool IsTimeDefined { get; set; }
         public bool IsPositionDefined { get; set; }
         public bool IsAltitudeMetersDefined { get; set; }
+
+        
     }
 }
