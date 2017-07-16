@@ -1,5 +1,0 @@
-G:\projects\tcxcombine\tcxengine\bin\Debug\tcxengine.dll
-G:\projects\tcxcombine\tcxengine\bin\Debug\tcxengine.pdb
-G:\projects\tcxcombine\tcxengine\obj\Debug\tcxengine.dll
-G:\projects\tcxcombine\tcxengine\obj\Debug\tcxengine.pdb
-G:\projects\tcxcombine\tcxengine\obj\Debug\tcxengine.csprojResolveAssemblyReference.cache
