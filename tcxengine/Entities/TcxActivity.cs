@@ -11,5 +11,6 @@ namespace tcxengine.Entities
         public string Id { get; set; }
         public List<TcxLap> Laps { get; set; }
         public string Sport { get; set; }
+        
     }
 }

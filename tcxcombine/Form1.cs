@@ -20,9 +20,11 @@ namespace tcxcombine
 
         private void button1_Click(object sender, EventArgs e)
         {
-            XmlToTcx.Convert("2017_07_07__15_00_20170707_2 z pracy.tcx");
-            var gpx = XmlToGpx.Convert("Afternoon_Ride.gpx");
+            var firstTcx = XmlToTcx.Convert("07_07.tcx");
+            var gpx = XmlToGpx.Convert("07_07.gpx");
             var tcx = gpx[0].ConvertToTcxActivity();
+
+            firstTcx[0].Laps[0].Track.Concat(tcx.Laps[0].Track);
 
             Console.WriteLine("END");
         }

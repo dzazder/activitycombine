@@ -67,5 +67,152 @@ namespace tcxengine.Entities
             IsCadenceDefined = false;
             IsExtensionsDefined = false;
         }
+
+        public TcxTrackpoint CombineTrackpoint(TcxTrackpoint second)
+        {
+            TcxTrackpoint newTrackpoint = new TcxTrackpoint();
+            newTrackpoint.Time = Time;
+            newTrackpoint.IsTimeDefined = true;
+
+            if (IsPositionDefined && second.IsPositionDefined)
+            {
+                newTrackpoint.Position = Position;
+                newTrackpoint.IsPositionDefined = true;
+            }
+            else
+            {
+                if (IsPositionDefined)
+                {
+                    newTrackpoint.Position = Position;
+                    newTrackpoint.IsPositionDefined = true;
+                }
+                else if (second.IsPositionDefined)
+                {
+                    newTrackpoint.Position = second.Position;
+                    newTrackpoint.IsPositionDefined = true;
+                }
+                else
+                {
+                    newTrackpoint.IsPositionDefined = false;
+                }
+            }
+
+            if (IsAltitudeMetersDefined && second.IsAltitudeMetersDefined)
+            {
+                newTrackpoint.AltitudeMeters = AltitudeMeters;
+                newTrackpoint.IsAltitudeMetersDefined = true;
+            }
+            else
+            {
+                if (IsAltitudeMetersDefined)
+                {
+                    newTrackpoint.AltitudeMeters = AltitudeMeters;
+                    newTrackpoint.IsAltitudeMetersDefined = true;
+                }
+                else if (second.IsAltitudeMetersDefined)
+                {
+                    newTrackpoint.AltitudeMeters = second.AltitudeMeters;
+                    newTrackpoint.IsAltitudeMetersDefined = true;
+                }
+                else
+                {
+                    newTrackpoint.IsAltitudeMetersDefined = false;
+                }
+            }
+
+            if (IsDistanceMetersDefined && second.IsDistanceMetersDefined)
+            {
+                newTrackpoint.DistanceMeters = DistanceMeters;
+                newTrackpoint.IsDistanceMetersDefined = true;
+            }
+            else
+            {
+                if (IsDistanceMetersDefined)
+                {
+                    newTrackpoint.DistanceMeters = DistanceMeters;
+                    newTrackpoint.IsDistanceMetersDefined = true;
+                }
+                else if (second.IsDistanceMetersDefined)
+                {
+                    newTrackpoint.DistanceMeters = second.DistanceMeters;
+                    newTrackpoint.IsDistanceMetersDefined = true;
+                }
+                else
+                {
+                    newTrackpoint.IsDistanceMetersDefined = false;
+                }
+            }
+
+            if (IsSensorStateDefined && second.IsSensorStateDefined)
+            {
+                newTrackpoint.SensorState = SensorState;
+                newTrackpoint.IsSensorStateDefined = true;
+            }
+            else
+            {
+                if (IsSensorStateDefined)
+                {
+                    newTrackpoint.SensorState = SensorState;
+                    newTrackpoint.IsSensorStateDefined = true;
+                }
+                else if (second.IsSensorStateDefined)
+                {
+                    newTrackpoint.SensorState = second.SensorState;
+                    newTrackpoint.IsSensorStateDefined = true;
+                }
+                else
+                {
+                    newTrackpoint.IsSensorStateDefined = false;
+                }
+            }
+
+            if (IsHeartRateBpmDefined && second.IsHeartRateBpmDefined)
+            {
+                newTrackpoint.HeartRateBpm = HeartRateBpm;
+                newTrackpoint.IsHeartRateBpmDefined = true;
+            }
+            else
+            {
+                if (IsHeartRateBpmDefined)
+                {
+                    newTrackpoint.HeartRateBpm = HeartRateBpm;
+                    newTrackpoint.IsHeartRateBpmDefined = true;
+                }
+                else if (second.IsHeartRateBpmDefined)
+                {
+                    newTrackpoint.HeartRateBpm = second.HeartRateBpm;
+                    newTrackpoint.IsHeartRateBpmDefined = true;
+                }
+                else
+                {
+                    newTrackpoint.IsHeartRateBpmDefined = false;
+                }
+            }
+
+            if (IsCadenceDefined && second.IsCadenceDefined)
+            {
+                newTrackpoint.Cadence = Cadence;
+                newTrackpoint.IsCadenceDefined = true;
+            }
+            else
+            {
+                if (IsCadenceDefined)
+                {
+                    newTrackpoint.Cadence = Cadence;
+                    newTrackpoint.IsCadenceDefined = true;
+                }
+                else if (second.IsCadenceDefined)
+                {
+                    newTrackpoint.Cadence = second.Cadence;
+                    newTrackpoint.IsCadenceDefined = true;
+                }
+                else
+                {
+                    newTrackpoint.IsCadenceDefined = false;
+                }
+            }
+
+            return newTrackpoint;
+        }
     }
 }
