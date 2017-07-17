@@ -232,10 +232,10 @@ namespace tcxengine.Entities
                 sb.Append("<Position>");
                 sb.Append("<LatitudeDegrees>");
                 sb.Append(Position.Latitude);
-                sb.Append("<LatitudeDegrees>");
+                sb.Append("</LatitudeDegrees>");
                 sb.Append("<LongitudeDegrees>");
                 sb.Append(Position.Longitude);
-                sb.Append("<LongitudeDegrees>");
+                sb.Append("</LongitudeDegrees>");
                 sb.Append("</Position>");
             }
 
@@ -250,7 +250,7 @@ namespace tcxengine.Entities
             {
                 sb.Append("<DistanceMeters>");
                 sb.Append(DistanceMeters.ToString());
-                sb.Append("</TimeDistanceMeters>");
+                sb.Append("</DistanceMeters>");
             }
 
             if (IsSensorStateDefined)
