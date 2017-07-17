@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -231,10 +232,10 @@ namespace tcxengine.Entities
             {
                 sb.Append("<Position>");
                 sb.Append("<LatitudeDegrees>");
-                sb.Append(Position.Latitude);
+                sb.Append(Position.Latitude.ToString(new CultureInfo("en-US")));
                 sb.Append("</LatitudeDegrees>");
                 sb.Append("<LongitudeDegrees>");
-                sb.Append(Position.Longitude);
+                sb.Append(Position.Longitude.ToString(new CultureInfo("en-US")));
                 sb.Append("</LongitudeDegrees>");
                 sb.Append("</Position>");
             }
@@ -242,14 +243,14 @@ namespace tcxengine.Entities
             if (IsAltitudeMetersDefined)
             {
                 sb.Append("<AltitudeMeters>");
-                sb.Append(AltitudeMeters.ToString());
+                sb.Append(AltitudeMeters.ToString(new CultureInfo("en-US")));
                 sb.Append("</AltitudeMeters>");
             }
 
             if (IsDistanceMetersDefined)
             {
                 sb.Append("<DistanceMeters>");
-                sb.Append(DistanceMeters.ToString());
+                sb.Append(DistanceMeters.ToString(new CultureInfo("en-US")));
                 sb.Append("</DistanceMeters>");
             }
 
