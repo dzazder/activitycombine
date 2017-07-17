@@ -214,5 +214,55 @@ namespace tcxengine.Entities
 
             return newTrackpoint;
         }
+
+        public string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<Trackpoint>");
+
+            if (IsTimeDefined)
+            {
+                sb.Append("<Time>");
+                sb.Append(Time.ToString());
+                sb.Append("</Time>");
+            }
+
+            if (IsPositionDefined)
+            {
+                sb.Append("<Position>");
+                sb.Append("<LatitudeDegrees>");
+                sb.Append(Position.Latitude);
+                sb.Append("<LatitudeDegrees>");
+                sb.Append("<LongitudeDegrees>");
+                sb.Append(Position.Longitude);
+                sb.Append("<LongitudeDegrees>");
+                sb.Append("</Position>");
+            }
+
+            if (IsAltitudeMetersDefined)
+            {
+                sb.Append("<AltitudeMeters>");
+                sb.Append(AltitudeMeters.ToString());
+                sb.Append("</AltitudeMeters>");
+            }
+
+            if (IsDistanceMetersDefined)
+            {
+                sb.Append("<DistanceMeters>");
+                sb.Append(DistanceMeters.ToString());
+                sb.Append("</TimeDistanceMeters>");
+            }
+
+            if (IsSensorStateDefined)
+            {
+                sb.Append("<SensorState>");
+                sb.Append(SensorState.ToString());
+                sb.Append("</SensorState>");
+            }
+
+            sb.Append("</Trackpoint>");
+
+            return sb.ToString();
+        }
     }
 }

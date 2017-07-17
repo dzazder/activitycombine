@@ -52,5 +52,16 @@ namespace tcxengine.Entities
         {
             TrackPoints = TrackPoints.OrderBy(x => x.Time).ToList();
         }
+
+        public double TotalTimeInSeconds()
+        {
+            return (TrackPoints.Last().Time - TrackPoints.First().Time).TotalSeconds;
+        }
+
+        public double DistanceMeters()
+        {
+            return TrackPoints.Last().DistanceMeters;
+        }
+        
     }
 }

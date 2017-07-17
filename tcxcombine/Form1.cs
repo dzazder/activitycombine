@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace tcxcombine
 
             firstTcx[0].Laps[0].Track.Concat(tcx.Laps[0].Track);
 
+            File.WriteAllText("result.tcx", firstTcx[0].ToString());
             Console.WriteLine("END");
         }
     }
