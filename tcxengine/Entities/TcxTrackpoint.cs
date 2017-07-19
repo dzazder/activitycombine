@@ -69,6 +69,61 @@ namespace tcxengine.Entities
             IsExtensionsDefined = false;
         }
 
+        public TcxTrackpoint CombineTrackpoint(TcxTrackpoint prev, List<TcxTrackpoint> next)
+        {
+            TcxTrackpoint newTrackpoint = new TcxTrackpoint();
+            newTrackpoint.Time = Time;
+            newTrackpoint.IsTimeDefined = true;
+
+            if (!IsPositionDefined)
+            {
+                if (!prev.IsPositionDefined)
+                {
+                    Console.WriteLine("Previous element has not defines position!");
+                }
+                else
+                {
+                    TcxTrackpoint nextM = null;
+                    int count = 0;
+                    foreach (TcxTrackpoint t in next)
+                    {
+                        count++;
+                        if (t.IsPositionDefined)
+                        {
+                            nextM = t;
+                            break;
+                        }
+                    }
+                    if (nextM == null)
+                    {
+                        Console.WriteLine("Not found next element with position specified!");
+                    }
+                    else
+                    {
+                        double fullDiff = (nextM.Time - prev.Time).TotalSeconds;
+                        double diff = (Time - prev.Time).TotalSeconds;
+
+                        double latDiff = nextM.Position.Latitude - prev.Position.Latitude;
+                        double lonDiff = nextM.Position.Longitude - prev.Position.Longitude;
+
+                        double newLat = prev.Position.Latitude + ((diff / fullDiff) * latDiff);
+                        double newLon = prev.Position.Longitude + ((diff / fullDiff) * lonDiff);
+
+                        newTrackpoint.Position = new TcxPosition(newLat, newLon);
+                        newTrackpoint.IsPositionDefined = true;
+                    }
+                }
+            }
+            else
+            {
+                newTrackpoint.Position = Position;
+            }
+
+
+            // todo rest of attributes
+            return newTrackpoint;
+        }
+
         public TcxTrackpoint CombineTrackpoint(TcxTrackpoint second)
         {
             TcxTrackpoint newTrackpoint = new TcxTrackpoint();

@@ -36,7 +36,15 @@ namespace tcxengine.Entities
                 }
 
                 sb.Append("</Track>");
-                sb.Append("<TotalTimeSeconds>" + totalTime + "</TotalTimeSeconds><DistanceMeters>" + distanceMeters + "</DistanceMeters><MaximumSpeed>10.780555555555557</MaximumSpeed><Calories>0</Calories><Intensity>Active</Intensity><Cadence>87</Cadence><TriggerMethod>Manual</TriggerMethod><Notes/><Extensions><extv2:LX><extv2:AvgSpeed>6.675</extv2:AvgSpeed></extv2:LX></Extensions>");
+                sb.Append("<TotalTimeSeconds>" + totalTime + "</TotalTimeSeconds>");
+                sb.Append("<DistanceMeters>" + distanceMeters + "</DistanceMeters>");
+                sb.Append("<MaximumSpeed>10.780555555555557</MaximumSpeed>");
+                sb.Append("<Calories>0</Calories>");
+                sb.Append("<Intensity>Active</Intensity>");
+                sb.Append("<Cadence>87</Cadence>");
+                sb.Append("<TriggerMethod>Manual</TriggerMethod>");
+                sb.Append("<Notes/>");
+                sb.Append("<Extensions><extv2:LX><extv2:AvgSpeed>" + 6.675 + "</extv2:AvgSpeed></extv2:LX></Extensions>");
                 sb.Append("</Lap>");
             }
 

@@ -44,8 +44,29 @@ namespace tcxengine.Entities
                     }
                 }
             }
+            if (TrackPoints.Count > 0)
+            {
+                newTrack.Add(TrackPoints.Last());
+            }
 
             TrackPoints = newTrack;
+        }
+
+        protected void Normalize()
+        {
+            TcxTrackpoint prev = null;
+            TcxTrackpoint current = null;
+            List<TcxTrackpoint> next = null;
+            List<TcxTrackpoint> newTrack = new List<TcxTrackpoint>();
+
+            for (int i = 1; i < TrackPoints.Count - 1; i++)
+            {
+                prev = TrackPoints[i - 1];
+                current = TrackPoints[i];
+                next = TrackPoints.GetRange(i + 1, TrackPoints.Count - i - 1);
+
+                current.CombineTrackpoint(prev, next);
+            }
         }
 
         public void OrderByTime()
