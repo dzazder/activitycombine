@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcxcombine", "tcxcombine\tc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcxengine", "tcxengine\tcxengine.csproj", "{813C73C8-8395-46D1-812E-D524FE05A37B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcxUnitTest", "TcxUnitTest\TcxUnitTest.csproj", "{FFCB3F13-0F53-41C8-BA7E-BAACCE057B79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{813C73C8-8395-46D1-812E-D524FE05A37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{813C73C8-8395-46D1-812E-D524FE05A37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{813C73C8-8395-46D1-812E-D524FE05A37B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFCB3F13-0F53-41C8-BA7E-BAACCE057B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFCB3F13-0F53-41C8-BA7E-BAACCE057B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFCB3F13-0F53-41C8-BA7E-BAACCE057B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFCB3F13-0F53-41C8-BA7E-BAACCE057B79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -71,6 +71,7 @@ namespace tcxengine.Entities
 
         public TcxTrackpoint CombineTrackpoint(TcxTrackpoint prev, List<TcxTrackpoint> next)
         {
+            Console.WriteLine("Combine Trackpoint");
             TcxTrackpoint newTrackpoint = new TcxTrackpoint();
             newTrackpoint.Time = Time;
             newTrackpoint.IsTimeDefined = true;
@@ -111,6 +112,8 @@ namespace tcxengine.Entities
 
                         newTrackpoint.Position = new TcxPosition(newLat, newLon);
                         newTrackpoint.IsPositionDefined = true;
+                        Console.WriteLine(string.Format("Diff: {0}, FullDiff: {1}, LatDiff: {2}, LonDiff: {3}, newLat: {4}, newLon: {5}",
+                            diff, fullDiff, latDiff, lonDiff, newLat, newLon));
                     }
                 }
             }

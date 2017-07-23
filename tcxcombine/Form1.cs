@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using tcxengine;
+using tcxengine.Entities;
 
 namespace tcxcombine
 {
@@ -29,6 +30,33 @@ namespace tcxcombine
 
             File.WriteAllText("result.tcx", firstTcx[0].ToString());
             Console.WriteLine("END");
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            TcxTrackpoint c = new TcxTrackpoint();
+            c.IsTimeDefined = true;
+            c.Time = new DateTime(2017, 07, 01, 11, 10, 10);
+            c.IsPositionDefined = false;
+
+            TcxTrackpoint p = new TcxTrackpoint();
+            c.IsTimeDefined = true;
+            c.Time = new DateTime(2017, 07, 01, 11, 10, 09);
+            c.IsPositionDefined = true;
+            c.Position = new TcxPosition(51.085341, 17.043303);
+
+            TcxTrackpoint n = new TcxTrackpoint();
+            c.IsTimeDefined = true;
+            c.Time = new DateTime(2017, 07, 01, 11, 10, 11);
+            c.IsPositionDefined = true;
+            c.Position = new TcxPosition(51.085286, 17.043645);
+
+            List<TcxTrackpoint> next = new List<TcxTrackpoint>();
+            next.Add(n);
+            var result = c.CombineTrackpoint(p, next);
+
+            double lat = (51.085341 + 51.085286) / 2;
+            double lon = (17.043303 + 17.043645) / 2;
         }
     }
 }
