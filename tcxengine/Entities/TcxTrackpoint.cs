@@ -80,7 +80,7 @@ namespace tcxengine.Entities
             {
                 if (!prev.IsPositionDefined)
                 {
-                    Console.WriteLine("Previous element has not defines position!");
+                    Console.WriteLine("Previous element has not defined position!");
                 }
                 else
                 {
@@ -122,6 +122,175 @@ namespace tcxengine.Entities
                 newTrackpoint.Position = Position;
             }
 
+            if (!IsAltitudeMetersDefined)
+            {
+                if (!prev.IsAltitudeMetersDefined)
+                {
+                    Console.WriteLine("Previous element has not defined elevation!");
+                }
+                else
+                {
+                    TcxTrackpoint nextM = null;
+                    int count = 0;
+                    foreach (TcxTrackpoint t in next)
+                    {
+                        count++;
+                        if (t.IsAltitudeMetersDefined)
+                        {
+                            nextM = t;
+                            break;
+                        }
+                    }
+                    if (nextM == null)
+                    {
+                        Console.WriteLine("Not found next element with elevation specified!");
+                    }
+                    else
+                    {
+                        double fullDiff = (nextM.Time - prev.Time).TotalSeconds;
+                        double diff = (Time - prev.Time).TotalSeconds;
+
+                        double eleDiff = nextM.AltitudeMeters - prev.AltitudeMeters;
+
+                        double newEle = (int)(prev.AltitudeMeters + ((diff / fullDiff) * eleDiff));
+
+                        newTrackpoint.AltitudeMeters = newEle;
+                        newTrackpoint.IsAltitudeMetersDefined = true;
+                    }
+                }
+            }
+            else
+            {
+                newTrackpoint.AltitudeMeters = AltitudeMeters;
+            }
+
+            if (!IsCadenceDefined)
+            {
+                if (!prev.IsCadenceDefined)
+                {
+                    Console.WriteLine("Previous element has not defined cadence!");
+                }
+                else
+                {
+                    TcxTrackpoint nextM = null;
+                    int count = 0;
+                    foreach (TcxTrackpoint t in next)
+                    {
+                        count++;
+                        if (t.IsCadenceDefined)
+                        {
+                            nextM = t;
+                            break;
+                        }
+                    }
+                    if (nextM == null)
+                    {
+                        Console.WriteLine("Not found next element with cadence specified!");
+                    }
+                    else
+                    {
+                        double fullDiff = (nextM.Time - prev.Time).TotalSeconds;
+                        double diff = (Time - prev.Time).TotalSeconds;
+
+                        double cadDiff = nextM.Cadence - prev.Cadence;
+
+                        double newCad = (int)(prev.Cadence + ((diff / fullDiff) * cadDiff));
+
+                        newTrackpoint.Cadence = newCad;
+                        newTrackpoint.IsCadenceDefined = true;
+                    }
+                }
+            }
+            else
+            {
+                newTrackpoint.Cadence = Cadence;
+            }
+
+            if (!IsDistanceMetersDefined)
+            {
+                if (!prev.IsDistanceMetersDefined)
+                {
+                    Console.WriteLine("Previous element has not defined distance meters!");
+                }
+                else
+                {
+                    TcxTrackpoint nextM = null;
+                    int count = 0;
+                    foreach (TcxTrackpoint t in next)
+                    {
+                        count++;
+                        if (t.IsDistanceMetersDefined)
+                        {
+                            nextM = t;
+                            break;
+                        }
+                    }
+                    if (nextM == null)
+                    {
+                        Console.WriteLine("Not found next element with distance meters specified!");
+                    }
+                    else
+                    {
+                        double fullDiff = (nextM.Time - prev.Time).TotalSeconds;
+                        double diff = (Time - prev.Time).TotalSeconds;
+
+                        double distDiff = nextM.DistanceMeters - prev.DistanceMeters;
+
+                        double newDist = (int)(prev.DistanceMeters + ((diff / fullDiff) * distDiff));
+
+                        newTrackpoint.DistanceMeters = newDist;
+                        newTrackpoint.IsDistanceMetersDefined = true;
+                    }
+                }
+            }
+            else
+            {
+                newTrackpoint.DistanceMeters = DistanceMeters;
+            }
+
+            if (!IsHeartRateBpmDefined)
+            {
+                if (!prev.IsHeartRateBpmDefined)
+                {
+                    Console.WriteLine("Previous element has not defined heart rate!");
+                }
+                else
+                {
+                    TcxTrackpoint nextM = null;
+                    int count = 0;
+                    foreach (TcxTrackpoint t in next)
+                    {
+                        count++;
+                        if (t.IsHeartRateBpmDefined)
+                        {
+                            nextM = t;
+                            break;
+                        }
+                    }
+                    if (nextM == null)
+                    {
+                        Console.WriteLine("Not found next element with heart rate specified!");
+                    }
+                    else
+                    {
+                        double fullDiff = (nextM.Time - prev.Time).TotalSeconds;
+                        double diff = (Time - prev.Time).TotalSeconds;
+
+                        double heartDiff = nextM.HeartRateBpm - prev.HeartRateBpm;
+
+                        double newHeart = (int)(prev.HeartRateBpm + ((diff / fullDiff) * heartDiff));
+
+                        newTrackpoint.HeartRateBpm = newHeart;
+                        newTrackpoint.IsHeartRateBpmDefined = true;
+                    }
+                }
+            }
+            else
+            {
+                newTrackpoint.HeartRateBpm = HeartRateBpm;
+            }
+
+            
 
             // todo rest of attributes
             return newTrackpoint;
